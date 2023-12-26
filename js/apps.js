@@ -2,6 +2,7 @@ window.addEventListener('load', () => {
     const form = document.querySelector('#newTask');
     const taskInput = document.querySelector('#taskInput');
     const list = document.querySelector('#tasks');
+    const modal = document.querySelector('.modal');
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -9,9 +10,14 @@ window.addEventListener('load', () => {
         const task = taskInput.value;
 
         if (!task) {
-            alert('Please fill out the task');
+            modal.style.display = 'block'
+            modal.classList.add("shake");
             return;
         }
+
+        window.addEventListener('click', () => {
+            modal.style.display = 'none';
+        })
 
         const taskList = document.createElement("div");
         taskList.classList.add("task");
